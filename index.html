@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="app.js"></script>
+    <title>Get Your password</title>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h1>Password Generator</h1>
+    </div>
+
+    <div class="output">
+            <div class="password-output"></div>
+            <button class="copy-button"><img src="https://img.icons8.com/material/24/e12120/copy-2--v1.png"/></button>
+    </div>
+
+    <div class="length">
+        <label for="getlength">Password Length</label>
+        <input id="getlength" type="text" required>
+    </div>
+    <div class="uppercase">
+        <label for="getuppercase">Include Uppercase letters</label>
+        <input id="getuppercase" type="checkbox">
+    </div>
+    <div class="lowercase">
+        <label for="getlowercase">Include Lowercase letters</label>
+        <input id="getlowercase" type="checkbox">
+    </div>
+    <div class="numbers">
+        <label for="getnumbers">Include numbers</label>
+        <input id="getnumbers" type="checkbox">
+    </div>
+    <div class="symbols">
+        <label for="getsymbols">Include symbols</label>
+        <input id="getsymbols" type="checkbox">
+    </div>
+
+    <div class="generate">
+        <button class="generate-button">Generate Password</button>
+    </div>
+</div>
+    
+</body>
+</html>
