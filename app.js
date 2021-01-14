@@ -7,22 +7,26 @@ const generateButton = document.querySelector(".generate-button")
 const outputText = document.querySelector(".password-output")
 const copyButton = document.querySelector(".copy-button")
 
-let upperCaseHasChecked=false , lowerCaseHasChecked=false , numbersHasChecked=false , symbolsHasChecked=false
+
 let functions = [{
                 name : getRandomUpperCase,
-                id:1
+                id:1,
+                HasChecked: false
                  },
                  {
                 name:getRandomLowercase,
-                id:2
+                id:2,
+                HasChecked: false
                  },
                  {
                 name:getRandomNumbers,
-                id:3
+                id:3,
+                HasChecked: false
                  },
                  {
                 name:getRandomSymbols,
-                id:4
+                id:4,
+                HasChecked: false
                  }]
 
 function getRandomUpperCase(){
@@ -43,44 +47,32 @@ function getRandomSymbols(){
 }
 
 upperCase.addEventListener('click',()=>{
-    upperCaseHasChecked =upperCase.checked
+    functions[0].HasChecked = upperCase.checked
+    
 
 })
 
 lowerCase.addEventListener('click',()=>{
-    lowerCaseHasChecked=lowerCase.checked
+    functions[1].HasChecked=lowerCase.checked
 })
 
 numbers.addEventListener('click',()=>{
-    numbersHasChecked = numbers.checked
+    functions[2].HasChecked = numbers.checked
 })
 
 symbols.addEventListener('click',()=>{
-    symbolsHasChecked = symbols.checked
+    functions[3].HasChecked = symbols.checked
 })
 
-length.addEventListener('change',()=>{
-
-})
 
 generateButton.addEventListener('click',()=>{
 
-   if(upperCaseHasChecked===false){
-    functions=functions.filter(list=>list.id!==1)
-   }
-   if(lowerCaseHasChecked===false){
-    functions=functions.filter(list=>list.id!==2)
-   }
-   if(numbersHasChecked===false){
-    functions=functions.filter(list=>list.id!==3)
-   }
-   if(symbolsHasChecked===false){
-    functions=functions.filter(list=>list.id!==4)
-   }
+
+ const finalFunction = functions.filter(fun => fun.HasChecked===true)
 
    let outputPassword = ""
   for(i=0;i<length.value;i++){
-      outputPassword+=functions[Math.floor(Math.random() *functions.length)].name()
+      outputPassword+=finalFunction[Math.floor(Math.random() *finalFunction.length)].name()
   }
   outputText.innerText=outputPassword
 })
@@ -93,4 +85,5 @@ copyButton.addEventListener('click',()=>{
   aux.select()
   document.execCommand('copy')
   document.body.removeChild(aux);
+  alert('password copied to clipboard')
 })
